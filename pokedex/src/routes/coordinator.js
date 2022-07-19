@@ -8,3 +8,7 @@ export  const irParaDetalhes = (navigate) =>{
 export const irParaHome = (navigate) =>{
   navigate('/')
 }
+
+export const prevPage = (navigate) => {
+  navigate(-1)
+}
