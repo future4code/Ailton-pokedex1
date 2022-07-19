@@ -2,7 +2,7 @@ import React from 'react'
 // import { irParaDetalhes, irParaPokedex } from '../routes/coordinator'
 // import {useNavigate} from 'react-router-dom'
 import Header from '../components/Header'
-import CardPoke from '../components/CardPoke'
+// import CardPoke from '../components/CardPoke'
 import styled from 'styled-components';
 
 const CardArea = styled.div`
@@ -33,10 +33,13 @@ export default function HomePage() {
 
   return (
     <div>
-      <CardArea>
-        <Title>Todos Pokémons</Title>
-        <CardPoke />
-      </CardArea>
+      <Header
+        currentPage={"home"}
+      />
+      <main>
+        <h1>Todos Pokémons</h1>
+        {/* <CardPoke /> */}
+      </main>
         {/* <button onClick={()=>irParaPokedex(navigate)}>Pokedex</button>
         <button onClick={()=>irParaDetalhes(navigate)}>Pagina de detalhes</button> */}
     </div>
