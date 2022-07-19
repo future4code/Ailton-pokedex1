@@ -8,9 +8,9 @@ export default function Router() {
     <div>
       <BrowserRouter>
       <Routes>
-         <Route index element = {<HomePage/>}/>
-         <Route path='detalhes' element = {<DetailsPage/>}/>
-         <Route path='pokedex' element = {<Pokedex/>}/>
+         <Route index element ={<HomePage/>}/>
+         <Route path={'/pokemon/:pokeName/details'} element = {<DetailsPage/>}/>
+         <Route path={'pokedex'} element ={<Pokedex/>}/>
          <Route path='*' element = {<div>Error Page</div>}/>
       </Routes>
       </BrowserRouter>
