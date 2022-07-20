@@ -1,16 +1,22 @@
 import React from 'react'
-// import { irParaDetalhes, irParaPokedex } from '../routes/coordinator'
-// import {useNavigate} from 'react-router-dom'
 import Header from '../components/Header'
-// import CardPoke from '../components/CardPoke'
+import CardPoke from '../components/CardPoke'
 import styled from 'styled-components';
+import useRequestData from '../hook/useRequestData';
 
-const CardArea = styled.div`
+const AreaDaPagina = styled.div`
   position: relative;
+  background-color: background: #DDDDDD;
   width: 1440px;
   height: 2455px;
+`
+
+const CardArea = styled.div`
+  width: 1440px;
+  height: 2295px;
   background-color: #5E5E5E;
 `
+
 const Title = styled.div`
   position: absolute;
   width: 420px;
@@ -29,19 +35,28 @@ const Title = styled.div`
 `
 
 export default function HomePage() {
-    // const navigate = useNavigate()
+
+  const [pokeList] = useRequestData("pokemon?limit=20&offset=0", [])
+
+  const getPokeList = pokeList[0] ? pokeList.map((poke) => {
+    return (
+      <CardPoke
+        key={poke.id}
+        poke={poke}
+      />
+    )
+  }) : <p>Carregando...</p>
 
   return (
-    <div>
+    <AreaDaPagina>
       <Header
         currentPage={"home"}
       />
-      <main>
-        <h1>Todos Pokémons</h1>
-        {/* <CardPoke /> */}
-      </main>
-        {/* <button onClick={()=>irParaPokedex(navigate)}>Pokedex</button>
-        <button onClick={()=>irParaDetalhes(navigate)}>Pagina de detalhes</button> */}
-    </div>
+      <CardArea>
+        <Title>Todos Pokémons</Title>
+        {getPokeList}
+      </CardArea>
+ 
+    </AreaDaPagina>
   )
 }
