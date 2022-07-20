@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { irParaHome } from '../routes/coordinator';
-import { irParaPokedex } from '../routes/coordinator';
+import { irParaHome, irParaPokedex } from '../routes/coordinator';
 import styled from 'styled-components';
 import pokelogo from "../assets/pokelogo.png"
+import seta from "../assets/eva_arrow-ios-back-outline.png"
 
 const ContainerColor = styled.div`
     position: absolute;
@@ -40,6 +40,7 @@ const BotaoPokedex = styled.button`
   background: #33A4F5;
   border-radius: 8px;
   border-style: none;
+  cursor: pointer;
 `
 
 const NomeBotao = styled.p`
@@ -64,12 +65,10 @@ const NomeBotao = styled.p`
 
 const Seta = styled.img`
   position: absolute;
-  left: 33.3%;
-  right: 37.54%;
-  top: 20.83%;
-  bottom: 20.83%;
-
-  background: #000000;
+  width: 25px;
+  height: 25px;
+  left: 74px;
+  top: 67px;
 `
 
 const TextoMudaPage = styled.div`
@@ -86,6 +85,7 @@ const TextoMudaPage = styled.div`
   line-height: 36px;
   /* identical to box height */
   text-decoration-line: underline;
+  cursor: pointer;
 
   color: #1A1A1A;
 `
@@ -137,29 +137,35 @@ function Header (props) {
         return (
           <ContainerColor>
             <Logo />
-            <BotaoPokedex onClick={() => irParaPokedex(navigate)}><NomeBotao>Pokédex</NomeBotao></BotaoPokedex>
+            <nav>
+              <BotaoPokedex onClick={() => irParaPokedex(navigate)}><NomeBotao>Pokédex</NomeBotao></BotaoPokedex>
+            </nav>
           </ContainerColor>
         )
       case "pokedex":
         return (
           <ContainerColor>
-            <Seta />
-            <TextoMudaPage onClick={() => irParaHome(navigate)}>Todos Pokémons</TextoMudaPage>
+            <nav>
+              <Seta src={seta}/>
+              <TextoMudaPage onClick={() => irParaHome(navigate)}>Todos Pokémons</TextoMudaPage>
+            </nav>
             <Logo />
           </ContainerColor>
         )
       case "details":
         return (
           <ContainerColor>
-            <Seta />
-            <TextoMudaPage onClick={() => irParaHome(navigate)}>Todos Pokémons</TextoMudaPage>
+              <TextoMudaPage onClick={() => irParaHome(navigate)}>Todos Pokémons</TextoMudaPage>
+              <Seta src={seta}/>
             <Logo />
           </ContainerColor>
         )
       default:
         <ContainerColor>
-          <Logo />
-          <BotaoRemove><TextoDetalhes>Excluir da Pokédex</TextoDetalhes></BotaoRemove>
+          <nav>
+            <Logo />
+            <BotaoRemove><TextoDetalhes>Excluir da Pokédex</TextoDetalhes></BotaoRemove>
+          </nav>
         </ContainerColor>
     }
   }
