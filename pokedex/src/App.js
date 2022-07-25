@@ -1,21 +1,13 @@
-import React from 'react';
-import Router from './routes/Router';
-import { createGlobalStyle } from 'styled-components';
+import React from 'react'
+import GlobalState from './components/global/GlobalState'
+import Router from './routes/Router'
 
-const GlobalStyle = createGlobalStyle`
-   body {
-    margin: 0;
-    padding: 0;
-   }
-`
-
-function App() {
+const App = () => {
   return (
-    <div>
-      <GlobalStyle />
+    <GlobalState>
       <Router />
-    </div>
-  );
+    </GlobalState>
+  )
 }
 
-export default App;
+export default App

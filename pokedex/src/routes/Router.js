@@ -1,20 +1,20 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DetailsPage from "../pages/DetailsPage";
 import HomePage from "../pages/HomePage";
-import Pokedex from "../pages/PokedexPage";
+import PokeDetail from "../pages/PokeDetail";
+import Pokedex from "../pages/Pokedex";
 
-export default function Router() {
+const Router = () => {
   return (
-    <div>
-      <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-         <Route index element = {<HomePage/>}/>
-         <Route path='detalhes' element = {<DetailsPage/>}/>
-         <Route path='pokedex' element = {<Pokedex/>}/>
-         <Route path='*' element = {<div>Error Page</div>}/>
+        <Route index element={<HomePage />} />
+        <Route path={"/pokedex"} element={<Pokedex />} />
+        <Route path={"/detalhes/:nome"} element={<PokeDetail />} /> 
+        <Route path="*" element={<h1>ERROR</h1>} />
       </Routes>
-      </BrowserRouter>
-     
-     </div>
-  )
-}
+    </BrowserRouter>
+  );
+};
+
+export default Router;
